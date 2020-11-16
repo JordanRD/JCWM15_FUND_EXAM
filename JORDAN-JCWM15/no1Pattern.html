@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATTERN</title>
+    <style>
+        body{
+            margin:60px 30px;
+        }
+    </style>
+</head>
+<body>
+<H1>PATTERN</H1>
+<br><br>
+<input type="number" name="" placeholder="masukan angka" id="inputangka">
+<button onclick="buttonganjil()">GANJIL</button>
+<button onclick="buttonhuruf()">HURUF</button>
+<p id="result"></p>
+</body>
+<script>
+
+    function buttonganjil() {
+    let input=parseInt(document.getElementById('inputangka').value)
+    let p=document.getElementById('result')
+    let pi='<p>'
+    if (isNaN(input)||input>4||input<=0) {
+        alert ('WRONG INPUT \n Pastikan input kurang dari 4\n dan tidak kurang dari 1')
+    } else {
+        let o=0
+        for(let i=0;i<=input;i++){
+            
+            for(let y=0;y<i;y++){
+                o++
+                pi+=` ${(o*2)-1}`
+            }
+            pi+='<br>'
+        }
+        p.innerHTML=pi
+    }
+    }
+    function buttonhuruf() {
+    let input=parseInt(document.getElementById('inputangka').value)
+    let p=document.getElementById('result')
+    let pi='<p>'
+    if (isNaN(input)||input>4||input<=0) {
+        alert ('WRONG INPUT \n Pastikan input kurang dari 4\n dan tidak kurang dari 1')
+    } else {
+        let o=0
+        for(let i=0;i<=input;i++){
+            
+            for(let y=0;y<i;y++){
+                o++
+                pi+=` ${String.fromCharCode(65+(o*2)-1)}`
+            }
+            pi+='<br>'
+        }
+        p.innerHTML=pi
+    }
+    }
+
+</script>
+</html>

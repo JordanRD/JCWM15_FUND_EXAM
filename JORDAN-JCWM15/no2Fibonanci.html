@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIBONANCI</title>
+    <style>
+        body{
+            margin:60px 30px;
+        }
+    </style>
+</head>
+<body>
+    <H1>DERET FIBONANCI</H1>
+    <label for="INPUT">Masukan angka : </label>
+    <input type="number" name="INPUT" id="input" placeholder="masukan angka">
+    <br><br>
+    <button onclick="Show()">SHOW</button>
+    <button onclick="Ganjil(1)">GANJIL</button>
+    <button onclick="Ganjil(2)">GENAP</button>
+    <h1>Result :</h1>
+    <h3 id="result"></h3>
+    <hr>
+</body>
+<script>
+    function Show(){
+    let input=parseInt(document.getElementById('input').value)
+    let h2=document.getElementById ('result')
+    h2.innerHTML=''
+    let out=''
+    if (isNaN(input)) {
+        alert('input tidak boleh kosong !')
+    } else {
+        h2.innerHTML+='0 '
+    let simpan=0
+            let temp=1
+            let init=0
+        console.log(input);
+        loop :while(true){
+            simpan=temp+init
+            temp+=init
+            init=simpan
+            if (init > input) {
+                h2.innerHTML+=` = ${simpan}`
+                break loop
+            } else {
+                h2.innerHTML+=`+ ${simpan} `
+            }
+        }
+    }
+    }
+    function Ganjil(a){
+    let input=parseInt(document.getElementById('input').value)
+    let h2=document.getElementById ('result')
+     h2.innerHTML=''
+    let out=''
+    if (isNaN(input)) {
+        alert('input tidak boleh kosong !')
+    } else {
+        h2.innerHTML+='0 '
+    let simpan=0
+            let temp=1
+            let init=0
+        console.log(input);
+        loop :while(true){
+            simpan=temp+init
+            temp+=init
+            init=simpan
+            if (a===1) {
+                if ((simpan*2)-1 > input) {
+                h2.innerHTML+=` = ${(simpan*2)-1}`
+                break loop
+            } else {
+                h2.innerHTML+=`+ ${(simpan*2)-1} `
+            }
+            } else {
+                if(a===2){
+                    if (init > input) {
+                h2.innerHTML+=` = ${simpan}`
+                break loop
+            } else {
+                h2.innerHTML+=`+ ${simpan} `
+            }
+                }
+                
+            }
+        }
+    }
+    }
+</script>
+</html>

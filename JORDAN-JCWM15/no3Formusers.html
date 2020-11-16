@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM USER</title>
+    <style>
+        body{
+            margin:60px 30px;
+        }
+        table,thead,tr,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>FORM USER</h1>
+    <input type="text" name="" id="username" placeholder="username">
+    <input type="email" name="" id="email" placeholder="email@">
+    <label for="option">role :</label>
+    <select name="option" id="role">
+        <option value="user">user</option>
+        <option value="admin">admin</option>
+    </select>
+    <br><br>
+    <button onclick=AddUser()>ADD USER</button>
+    <br><br>
+    <h2>USERS DATA :</h2>
+    <table>
+        <thead>
+            <tr>
+                <td><b>No</b></td>
+                <td><b>Username</b></td>
+                <td><b>Email</b></td>
+                <td><b>Role</b></td>
+                <td><b>Action</b></td>
+            </tr>
+        </thead>
+        <tbody id="oody">
+
+        </tbody>
+    </table>
+    
+</body>
+<script>
+let input=[{
+    username : 'jordanrd',
+    email :'jordan@gmail.com',
+    role: 'admin'
+},{
+    username : 'alee',
+    email :'alee@gmail.com',
+    role: 'user'
+}
+,{
+    username : 'elsa',
+    email :'elsa@disney.com',
+    role: 'user'
+}]
+class addUser{
+    constructor(username,email,role){
+        this.username=username
+        this.email=email
+        this.role=role
+    }
+}
+ShowuserData()
+function ShowuserData(idx){
+let tbody=document.getElementById('oody')
+let tr=''
+for (let i = 0; i < input.length; i++) {
+    if(idx===i){
+        tr+=`<tr>
+        <td>#</td>
+        <td><input type="text" placeholder ='username' name="" id="editUsername"></td>
+        <td><input type="email" name="" placeholder='email@' id="editEmail"></td>
+        <td><select name="option" id="roleEdit">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+        </select></td>
+        <td><button onclick="ButtonSave(${i})">SAVE</button>
+            <button onclick="ButtonCancel(${i})">CANCEL</button></td>
+    </tr>`
+    }else{
+
+    tr+=`<tr>
+        <td>${i+1}</td>
+        <td>${input[i].username}</td>
+        <td>${input[i].email}</td>
+        <td>${input[i].role}</td>
+        <td><button onclick='buttonedit(${i})'>EDIT</button>
+        <button onclick='buttondelete(${i})'>DELETE</button></td>
+        </tr>`
+    }
+}
+tbody.innerHTML=tr
+}
+function AddUser(){
+    let username = document.getElementById('username').value
+    let email = document.getElementById('email').value
+    let usernamep = document.getElementById('username')
+    let email8 = document.getElementById('email')
+    let role = document.getElementById('role').value
+    let regex=new RegExp('@','gim')
+    if(username==''||email==''||regex.test(email)==false){
+        alert ('Pastikan input yang anda masukan benar dan tidak kosong !')
+    }else{
+        input.push (new addUser(username,email,role))
+        usernamep.value=''
+        email8.value=''
+    }
+
+    ShowuserData()
+}
+function buttondelete(idx){
+    input.splice(idx,1)
+    ShowuserData()
+}
+function buttonedit(idx){
+    ShowuserData(idx)
+}
+function ButtonSave(idx){
+let uname=document.getElementById('editUsername').value
+let email=document.getElementById('editEmail').value
+let role=document.getElementById('roleEdit').value
+let regex=new RegExp('@','gim')
+if (uname==''||email==''||regex.test(email)===false) {
+    alert('Input tidak boleh kosong !')
+}else{
+    input[idx].username=uname
+    input[idx].email=email
+    input[idx].role=role
+ShowuserData() 
+}
+}
+
+</script>
+</html>
